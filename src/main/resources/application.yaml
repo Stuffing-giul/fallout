@@ -1,0 +1,39 @@
+server:
+  servlet:
+    context-path: /fallout/api/v1
+  port: 8081
+
+spring:
+  application:
+    name: fallout
+  flyway:
+    locations: classpath:db/migration
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/fallout
+    driver-class-name: org.postgresql.Driver
+    username: fallout
+    password: fallout
+  jpa:
+    properties:
+      hibernate:
+        event.merge.entity_copy_observer: allow
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+        ddl-auto: none
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        order_inserts: true
+        order_updates: true
+        batch_versioned_data: true
+        type:
+          preferred_uuid_jdbc_type: CHAR
+        jdbc:
+          batch_size: 50
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type: TRACE

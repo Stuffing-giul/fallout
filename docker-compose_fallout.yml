@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  pg:
+    image: "postgres"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=fallout
+      - POSTGRES_USER=fallout
+      - POSTGRES_DB=fallout
+      - PGDATA=/var/lib/postgresql/data/game
+    volumes:
+      - ./postgre/data:/var/lib/postgresql/data
